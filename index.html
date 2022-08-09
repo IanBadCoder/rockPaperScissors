@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+    function getComputerChoice() {
+        let rnum = Math.floor(Math.random() * 3)
+        if (rnum === 0) {
+            return 'rock';
+        } else if (rnum === 1) {
+            return 'paper';
+        } else if (rnum === 2) {
+            return 'scissors';
+        }
+    }
+
+    function getPlayerChoice () {
+        let input = prompt('Choose rock, paper or scissors: ', 'rock');
+        input = input.toLowerCase();
+        return input;
+    }
+    function playRound() {
+        const computerChoice = getComputerChoice();
+        const playerChoice = getPlayerChoice();
+        if (computerChoice === playerChoice) {
+            return 'draw';
+        } else if (computerChoice === 'rock' && playerChoice === 'scissors') {
+            return 'computer won';
+        } else if (computerChoice === 'paper' && playerChoice === 'rock') {
+            return 'computer won';
+        } else if (computerChoice === 'scissors' && playerChoice === 'paper') {
+            return 'computer won';
+        } else {
+            return 'player won';
+        }
+    }
+    playerWins = 0;
+    computerWins = 0;
+    draw = 0;
+    function game() {
+        for (i = 0; i < 5; i++) {
+           let result = playRound();
+            if (result === 'computer won') {
+                computerWins++
+            } else if (result === 'player won') {
+                playerWins++
+            } else {
+                draw++
+            }
+        }
+        return `the player won ${playerWins} amount of games, while the computer won ${computerWins} amount of games and ${draw} so many draws`
+    }
+</script>
